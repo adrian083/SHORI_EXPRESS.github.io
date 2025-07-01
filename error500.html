@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página No Encontrada</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/SHORIp.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <style>
+        :root {
+            --primary-red: #A60603;
+            --secondary-black: #1a1a1a;
+            --text-white: #ffffff;
+            --light-gray: #f4f4f4;
+            --dark-gray-text: #333333;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray-text);
+            background-color: var(--light-gray);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--secondary-black);
+            color: var(--text-white);
+            padding: 1rem 0;
+            border-bottom: 5px solid var(--primary-red);
+        }
+
+        header .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .site-title {
+            margin: 0;
+            color: var(--text-white);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .site-title img {
+            max-width: 250px;
+            height: auto;
+            display: block;
+        }
+
+        .error-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: var(--light-gray);
+        }
+
+        .error-card {
+            background-color: var(--text-white);
+            padding: 50px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .error-message {
+            font-size: 2.5rem;
+            color: var(--secondary-black);
+            margin-bottom: 20px;
+        }
+
+        .error-description {
+            font-size: 1.2rem;
+            color: var(--dark-gray-text);
+            margin-bottom: 30px;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary-red);
+            color: var(--text-white);
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.15rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #cc0000;
+        }
+
+        footer {
+            background-color: var(--secondary-black);
+            color: var(--text-white);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 5px solid var(--primary-red);
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 2rem;
+            }
+            .error-code {
+                font-size: 6rem;
+            }
+            .error-message {
+                font-size: 2rem;
+            }
+            .error-description {
+                font-size: 1rem;
+            }
+            .home-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            .error-code {
+                font-size: 4rem;
+            }
+            .error-message {
+                font-size: 1.5rem;
+            }
+            .error-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="site-title"><img src="img/SHORIc.png" alt="cartel"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="button primary-button">Iniciar Sesión</a>
+                <a href="register.html" class="button secondary-button">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="error-container">
+        <div class="error-card">
+            <div class="error-code">500</div>
+            <div class="error-message">¡Uff! Algo salió mal.</div>
+            <p class="error-description">Lo sentimos, hemos experimentado un problema interno en nuestro servidor. Estamos trabajando para solucionarlo lo antes posible. Por favor, inténtalo de nuevo más tarde o vuelve a la página de inicio..</p>
+            <a href="index.html" class="home-button">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h3>Shori Express</h3>
+                    <p>La mejor parrilla a domicilio, ahora más cerca de ti.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parrilla-Shori/100094411466821/?locale=hi_IN#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shori Express. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shori Express - Gestión de Facturas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title"><img src="img/SHORIc.png" alt="Logo Shori Express"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="button primary-button">Iniciar Sesión</a>
+                <a href="register.html" class="button secondary-button">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container admin-page">
+        <aside class="admin-sidebar">
+            <h2>Gestión de Datos</h2>
+        <nav>
+            <ul>
+                <li><a href="panel.html" class="active"><i class="fas fa-home"></i> Panel</a></li>
+                <li><a href="admin_usuarios.html"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li><a href="admin_clientes.html"><i class="fas fa-user-friends"></i> Clientes</a></li>
+                <li><a href="admin_empleados.html"><i class="fas fa-user-tie"></i> Empleados</a></li>
+                <li><a href="admin_materia_prima.html"><i class="fas fa-boxes"></i> Materias Primas</a></li>
+                <li><a href="admin_pedidos.html"><i class="fas fa-clipboard-list"></i> Pedidos</a></li>
+                <li><a href="admin_bonos.html"><i class="fas fa-gift"></i> Bonos</a></li>
+                <li><a href="admin_entrada_inventario.html"><i class="fas fa-truck-loading"></i> Entrada Inventario</a></li>
+                <li><a href="admin_entrada_devolucion.html"><i class="fas fa-undo-alt"></i> Entrada Devolución</a></li>
+                <li><a href="admin_productos.html"><i class="fas fa-burger"></i> Productos</a></li>
+                <li><a href="admin_facturas.html"><i class="fas fa-file-invoice"></i> Facturas</a></li>
+                <li><a href="admin_redencion_bonos.html"><i class="fas fa-ticket-alt"></i> Redención Bonos</a></li>
+            </ul>
+        </nav>
+        </aside>
+
+        <section class="admin-content-area">
+            <article class="main-article">
+                <h2>Gestión de Facturas</h2>
+                
+                <h3>Listado de Facturas</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID Factura</th>
+                                <th>Número Factura</th>
+                                <th>Fecha Emisión</th>
+                                <th>Forma de Pago</th>
+                                <th>Subtotal</th>
+                                <th>IVA</th>
+                                <th>Total</th>
+                                <th>ID Pedido (FK)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>20240001</td>
+                                <td>2024-06-20</td>
+                                <td>Tarjeta de Crédito</td>
+                                <td>45000</td>
+                                <td>8550</td>
+                                <td>53550</td>
+                                <td>101</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>20240002</td>
+                                <td>2024-06-21</td>
+                                <td>Efectivo</td>
+                                <td>25000</td>
+                                <td>4750</td>
+                                <td>29750</td>
+                                <td>102</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+
+                <hr class="form-separator">
+
+                <h3>Registrar Nueva Factura</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="new_factura_numero">Número de Factura:</label>
+                        <input type="number" id="new_factura_numero" name="numero_factura" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_factura_fecha">Fecha de Emisión:</label>
+                        <input type="date" id="new_factura_fecha" name="fecha_emision" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_factura_forma_pago">Forma de Pago:</label>
+                        <input type="text" id="new_factura_forma_pago" name="forma_pago_factura" maxlength="25" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_factura_subtotal">Subtotal:</label>
+                        <input type="number" id="new_factura_subtotal" name="subtotal_factura" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_factura_iva">IVA:</label>
+                        <input type="number" id="new_factura_iva" name="iva_factura" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_factura_total">Total:</label>
+                        <input type="number" id="new_factura_total" name="total_factura" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_factura_id_pedido_fk">ID Pedido (FK):</label>
+                        <input type="number" id="new_factura_id_pedido_fk" name="id_pedido_fk" min="1" required>
+                    </div>
+                    <button type="submit" class="button primary-button">Registrar Factura</button>
+                </form>
+
+                <hr class="form-separator">
+
+                <h3>Actualizar Factura Existente</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="edit_factura_id">ID de Factura a Editar:</label>
+                        <input type="number" id="edit_factura_id" name="id_factura" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_numero">Número de Factura:</label>
+                        <input type="number" id="edit_factura_numero" name="numero_factura">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_fecha">Fecha de Emisión:</label>
+                        <input type="date" id="edit_factura_fecha" name="fecha_emision">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_forma_pago">Forma de Pago:</label>
+                        <input type="text" id="edit_factura_forma_pago" name="forma_pago_factura" maxlength="25">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_subtotal">Subtotal:</label>
+                        <input type="number" id="edit_factura_subtotal" name="subtotal_factura" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_iva">IVA:</label>
+                        <input type="number" id="edit_factura_iva" name="iva_factura" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_total">Total:</label>
+                        <input type="number" id="edit_factura_total" name="total_factura" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_factura_id_pedido_fk">ID Pedido (FK):</label>
+                        <input type="number" id="edit_factura_id_pedido_fk" name="id_pedido_fk" min="1">
+                    </div>
+                    <button type="submit" class="button primary-button">Actualizar Factura</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h3>Shori Express</h3>
+                    <p>La mejor parrilla a domicilio, ahora más cerca de ti.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parrilla-Shori/100094411466821/?locale=hi_IN#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shori Express. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

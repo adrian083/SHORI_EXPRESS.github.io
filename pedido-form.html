@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shori Express - Realizar Pedido</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="img/SHORIp.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title"><img src="img/SHORIc.png" alt="Logo Shori Express"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="button primary-button">Iniciar Sesión</a>
+                <a href="register.html" class="button secondary-button">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container form-page">
+        <section class="form-card">
+            <h2>¡Personaliza tu Pedido!</h2>
+            <form id="orderForm" action="#" method="POST">
+                <div class="input-group">
+                    <label for="id_cliente">Tu Documento </label>
+                    <input type="text" id="id_cliente" name="id_cliente" placeholder="Opcional, si estás registrado">
+                </div>
+
+                <div class="input-group">
+                    <label for="customer_name">Nombre Completo:</label>
+                    <input type="text" id="customer_name" name="customer_name" placeholder="Tu nombre para el pedido" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="delivery_address">Dirección de Entrega:</label>
+                    <input type="text" id="delivery_address" name="delivery_address" placeholder="Ej: Calle 10 #20-30, Apto 501" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone_number">Número de Teléfono:</label>
+                    <input type="tel" id="phone_number" name="phone_number" placeholder="Ej: 3001234567" required>
+                </div>
+
+                <hr class="form-separator">
+
+                <h3>Selecciona tus Platos:</h3>
+
+                <div class="menu-items-selection">
+                    <div class="menu-item-group">
+                        <label for="parrillada_doble">Parrillada Doble ($0):</label>
+                        <input type="number" id="parrillada_doble" name="parrillada_doble" min="0" value="0" data-price="45.00" class="item-quantity">
+                    </div>
+                    <div class="menu-item-group">
+                        <label for="bandeja_mixta">Bandeja Mixta ($0):</label>
+                        <input type="number" id="bandeja_mixta" name="bandeja_mixta" min="0" value="0" data-price="35.50" class="item-quantity">
+                    </div>
+                    <div class="menu-item-group">
+                        <label for="costillas_bbq">Costillas BBQ ($0):</label>
+                        <input type="number" id="costillas_bbq" name="costillas_bbq" min="0" value="0" data-price="28.00" class="item-quantity">
+                    </div>
+                    <div class="menu-item-group">
+                        <label for="papas_fritas">Papas Fritas Grandes ($0):</label>
+                        <input type="number" id="papas_fritas" name="papas_fritas" min="0" value="0" data-price="8.00" class="item-quantity">
+                    </div>
+                    <div class="menu-item-group">
+                        <label for="gaseosa_15l">Gaseosa 1.5L ($0):</label>
+                        <input type="number" id="gaseosa_15l" name="gaseosa_15l" min="0" value="0" data-price="5.00" class="item-quantity">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="descripcion_adicional">Instrucciones Especiales / Observaciones:</label>
+                    <textarea id="descripcion_adicional" name="descripcion_adicional" rows="4" placeholder="Ej: Carne de la Parrillada Doble bien cocida."></textarea>
+                </div>
+
+                <hr class="form-separator">
+
+                <div class="input-group order-total">
+                    <label>Total del Pedido:</label>
+                    <span id="total_pedido_display">$0.00</span>
+                    <input type="hidden" id="total_pedido_hidden" name="total_pedido" value="0.00">
+                </div>
+                
+                <button type="submit" class="submit-button">Confirmar Pedido</button>
+                <p class="form-link">Volver a <a href="servicios.html">Servicios</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h3>Shori Express</h3>
+                    <p>La mejor parrilla a domicilio, ahora más cerca de ti.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parrilla-Shori/100094411466821/?locale=hi_IN#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shori Express. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

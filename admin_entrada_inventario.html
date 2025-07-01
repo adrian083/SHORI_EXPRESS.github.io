@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shori Express - Gestión de Entradas de Inventario</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title"><img src="img/SHORIc.png" alt="Logo Shori Express"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="button primary-button">Iniciar Sesión</a>
+                <a href="register.html" class="button secondary-button">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container admin-page">
+        <aside class="admin-sidebar">
+            <h2>Gestión de Datos</h2>
+        <nav>
+            <ul>
+                <li><a href="panel.html" class="active"><i class="fas fa-home"></i> Panel</a></li>
+                <li><a href="admin_usuarios.html"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li><a href="admin_clientes.html"><i class="fas fa-user-friends"></i> Clientes</a></li>
+                <li><a href="admin_empleados.html"><i class="fas fa-user-tie"></i> Empleados</a></li>
+                <li><a href="admin_materia_prima.html"><i class="fas fa-boxes"></i> Materias Primas</a></li>
+                <li><a href="admin_pedidos.html"><i class="fas fa-clipboard-list"></i> Pedidos</a></li>
+                <li><a href="admin_bonos.html"><i class="fas fa-gift"></i> Bonos</a></li>
+                <li><a href="admin_entrada_inventario.html"><i class="fas fa-truck-loading"></i> Entrada Inventario</a></li>
+                <li><a href="admin_entrada_devolucion.html"><i class="fas fa-undo-alt"></i> Entrada Devolución</a></li>
+                <li><a href="admin_productos.html"><i class="fas fa-burger"></i> Productos</a></li>
+                <li><a href="admin_facturas.html"><i class="fas fa-file-invoice"></i> Facturas</a></li>
+                <li><a href="admin_redencion_bonos.html"><i class="fas fa-ticket-alt"></i> Redención Bonos</a></li>
+            </ul>
+        </nav>
+        </aside>
+
+        <section class="admin-content-area">
+            <article class="main-article">
+                <h2>Gestión de Entradas de Inventario</h2>
+                
+                <h3>Listado de Entradas de Inventario</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID Entrada</th>
+                                <th>Cantidad</th>
+                                <th>Fecha</th>
+                                <th>Precio Unitario</th>
+                                <th>Descripción</th>
+                                <th>ID Empleado (FK)</th>
+                                <th>ID Materia Prima (FK)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>101</td>
+                                <td>100</td>
+                                <td>2024-06-20</td>
+                                <td>250</td>
+                                <td>Compra de carne a proveedor A</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>50</td>
+                                <td>2024-06-22</td>
+                                <td>300</td>
+                                <td>Chorizos de la granja B</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+
+                <hr class="form-separator">
+
+                <h3>Registrar Nueva Entrada de Inventario</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="new_entrada_cantidad">Cantidad:</label>
+                        <input type="number" id="new_entrada_cantidad" name="cantidad_entrada_inventario" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_entrada_fecha">Fecha de Entrada:</label>
+                        <input type="date" id="new_entrada_fecha" name="fecha_entrada_inventario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_entrada_precio">Precio Unitario:</label>
+                        <input type="number" id="new_entrada_precio" name="precio_unitario" step="1" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_entrada_descripcion">Descripción:</label>
+                        <textarea id="new_entrada_descripcion" name="descripcion_entrada_inventario" rows="3" maxlength="100"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_entrada_empleado_fk">ID Empleado (FK):</label>
+                        <input type="number" id="new_entrada_empleado_fk" name="id_empleado_fk" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_entrada_materia_prima_fk">ID Materia Prima (FK):</label>
+                        <input type="number" id="new_entrada_materia_prima_fk" name="id_materia_prima_fk" min="1" required>
+                    </div>
+                    <button type="submit" class="button primary-button">Registrar Entrada</button>
+                </form>
+
+                <hr class="form-separator">
+
+                <h3>Actualizar Entrada de Inventario Existente</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="edit_entrada_id">ID de Entrada a Editar:</label>
+                        <input type="number" id="edit_entrada_id" name="id_entrada_inventario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_entrada_cantidad">Cantidad:</label>
+                        <input type="number" id="edit_entrada_cantidad" name="cantidad_entrada_inventario" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_entrada_fecha">Fecha de Entrada:</label>
+                        <input type="date" id="edit_entrada_fecha" name="fecha_entrada_inventario">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_entrada_precio">Precio Unitario:</label>
+                        <input type="number" id="edit_entrada_precio" name="precio_unitario" step="1" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_entrada_descripcion">Descripción:</label>
+                        <textarea id="edit_entrada_descripcion" name="descripcion_entrada_inventario" rows="3" maxlength="100"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_entrada_empleado_fk">ID Empleado (FK):</label>
+                        <input type="number" id="edit_entrada_empleado_fk" name="id_empleado_fk" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_entrada_materia_prima_fk">ID Materia Prima (FK):</label>
+                        <input type="number" id="edit_entrada_materia_prima_fk" name="id_materia_prima_fk" min="1">
+                    </div>
+                    <button type="submit" class="button primary-button">Actualizar Entrada</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h3>Shori Express</h3>
+                    <p>La mejor parrilla a domicilio, ahora más cerca de ti.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parrilla-Shori/100094411466821/?locale=hi_IN#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shori Express. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shori Express - Gestión de Usuarios</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title"><img src="img/SHORIc.png" alt="Logo Shori Express"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="button primary-button">Iniciar Sesión</a>
+                <a href="register.html" class="button secondary-button">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container admin-page">
+        <aside class="admin-sidebar">
+            <h2>Gestión de Datos</h2>
+        <nav>
+            <ul>
+                <li><a href="panel.html" class="active"><i class="fas fa-home"></i> Panel</a></li>
+                <li><a href="admin_usuarios.html"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li><a href="admin_clientes.html"><i class="fas fa-user-friends"></i> Clientes</a></li>
+                <li><a href="admin_empleados.html"><i class="fas fa-user-tie"></i> Empleados</a></li>
+                <li><a href="admin_materia_prima.html"><i class="fas fa-boxes"></i> Materias Primas</a></li>
+                <li><a href="admin_pedidos.html"><i class="fas fa-clipboard-list"></i> Pedidos</a></li>
+                <li><a href="admin_bonos.html"><i class="fas fa-gift"></i> Bonos</a></li>
+                <li><a href="admin_entrada_inventario.html"><i class="fas fa-truck-loading"></i> Entrada Inventario</a></li>
+                <li><a href="admin_entrada_devolucion.html"><i class="fas fa-undo-alt"></i> Entrada Devolución</a></li>
+                <li><a href="admin_productos.html"><i class="fas fa-burger"></i> Productos</a></li>
+                <li><a href="admin_facturas.html"><i class="fas fa-file-invoice"></i> Facturas</a></li>
+                <li><a href="admin_redencion_bonos.html"><i class="fas fa-ticket-alt"></i> Redención Bonos</a></li>
+            </ul>
+        </nav>
+        </aside>
+
+        <section class="admin-content-area">
+            <article class="main-article">
+                <h2>Gestión de Usuarios</h2>
+                
+                <h3>Listado de Usuarios</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID Usuario</th>
+                                <th>Nombre Usuario</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>admin01</td>
+                                <td>admin@shori.com</td>
+                                <td>Administrador</td>
+                                <td>Activo</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>empleado01</td>
+                                <td>empleado@shori.com</td>
+                                <td>Empleado</td>
+                                <td>Activo</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>cliente01</td>
+                                <td>cliente@shori.com</td>
+                                <td>Cliente</td>
+                                <td>Activo</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr class="form-separator">
+
+                <h3>Crear Nuevo Usuario</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="new_username">Nombre de Usuario:</label>
+                        <input type="text" id="new_username" name="nombre_usuario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_password">Contraseña:</label>
+                        <input type="password" id="new_password" name="contrasena_usuario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_email">Correo Electrónico:</label>
+                        <input type="email" id="new_email" name="correo_usuario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_role">Rol:</label>
+                        <select id="new_role" name="id_rol" required>
+                            <option value="">Selecciona un rol</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Empleado</option>
+                            <option value="3">Cliente</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_status">Estado:</label>
+                        <select id="new_status" name="estado_usuario" required>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="button primary-button">Crear Usuario</button>
+                </form>
+
+                <hr class="form-separator">
+
+                <h3>Actualizar Usuario Existente</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="edit_user_id">ID de Usuario a Editar:</label>
+                        <input type="number" id="edit_user_id" name="id_usuario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_username">Nombre de Usuario:</label>
+                        <input type="text" id="edit_username" name="nombre_usuario">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_password">Nueva Contraseña (dejar vacío para no cambiar):</label>
+                        <input type="password" id="edit_password" name="contrasena_usuario">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_email">Correo Electrónico:</label>
+                        <input type="email" id="edit_email" name="correo_usuario">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_role">Rol:</label>
+                        <select id="edit_role" name="id_rol">
+                            <option value="">Selecciona un rol</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Empleado</option>
+                            <option value="3">Cliente</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_status">Estado:</label>
+                        <select id="edit_status" name="estado_usuario">
+                            <option value="">Selecciona un estado</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="button primary-button">Actualizar Usuario</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h3>Shori Express</h3>
+                    <p>La mejor parrilla a domicilio, ahora más cerca de ti.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parrilla-Shori/100094411466821/?locale=hi_IN#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shori Express. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

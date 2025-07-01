@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shori Express - Gestión de Devoluciones de Inventario</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title"><img src="img/SHORIc.png" alt="Logo Shori Express"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="login.html" class="button primary-button">Iniciar Sesión</a>
+                <a href="register.html" class="button secondary-button">Registrarse</a>
+            </div>
+        </div>
+    </header>
+    <main class="container admin-page">
+        <aside class="admin-sidebar">
+            <h2>Gestión de Datos</h2>
+        <nav>
+            <ul>
+                <li><a href="panel.html" class="active"><i class="fas fa-home"></i> Panel</a></li>
+                <li><a href="admin_usuarios.html"><i class="fas fa-users"></i> Usuarios</a></li>
+                <li><a href="admin_clientes.html"><i class="fas fa-user-friends"></i> Clientes</a></li>
+                <li><a href="admin_empleados.html"><i class="fas fa-user-tie"></i> Empleados</a></li>
+                <li><a href="admin_materia_prima.html"><i class="fas fa-boxes"></i> Materias Primas</a></li>
+                <li><a href="admin_pedidos.html"><i class="fas fa-clipboard-list"></i> Pedidos</a></li>
+                <li><a href="admin_bonos.html"><i class="fas fa-gift"></i> Bonos</a></li>
+                <li><a href="admin_entrada_inventario.html"><i class="fas fa-truck-loading"></i> Entrada Inventario</a></li>
+                <li><a href="admin_entrada_devolucion.html"><i class="fas fa-undo-alt"></i> Entrada Devolución</a></li>
+                <li><a href="admin_productos.html"><i class="fas fa-burger"></i> Productos</a></li>
+                <li><a href="admin_facturas.html"><i class="fas fa-file-invoice"></i> Facturas</a></li>
+                <li><a href="admin_redencion_bonos.html"><i class="fas fa-ticket-alt"></i> Redención Bonos</a></li>
+            </ul>
+        </nav>
+        </aside>
+
+        <section class="admin-content-area">
+            <article class="main-article">
+                <h2>Gestión de Devoluciones de Inventario</h2>
+                
+                <h3>Listado de Devoluciones</h3>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID Devolución</th>
+                                <th>Cantidad</th>
+                                <th>Unidad Medida</th>
+                                <th>Descripción</th>
+                                <th>Fecha Devolución</th>
+                                <th>Tipo Devolución</th>
+                                <th>ID Entrada Inventario (FK)</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>201</td>
+                                <td>5</td>
+                                <td>kg</td>
+                                <td>Devolución por carne en mal estado</td>
+                                <td>2024-06-25</td>
+                                <td>Producto Defectuoso</td>
+                                <td>101</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>202</td>
+                                <td>2</td>
+                                <td>unidad</td>
+                                <td>Devolución por exceso de pedido</td>
+                                <td>2024-06-26</td>
+                                <td>Error de Pedido</td>
+                                <td>102</td>
+                                <td>
+                                    <button class="button small-button action-edit"><i class="fas fa-edit"></i> Editar</button>
+                                    <button class="button small-button action-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+
+                <hr class="form-separator">
+
+                <h3>Registrar Nueva Devolución</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="new_devolucion_cantidad">Cantidad:</label>
+                        <input type="number" id="new_devolucion_cantidad" name="cantidad_devolucion" min="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_devolucion_unidad">Unidad de Medida:</label>
+                        <input type="text" id="new_devolucion_unidad" name="unidad_medida_devolucion" maxlength="15" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_devolucion_descripcion">Descripción:</label>
+                        <textarea id="new_devolucion_descripcion" name="descripcion_devolucion" rows="3" maxlength="200"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_devolucion_fecha">Fecha de Devolución:</label>
+                        <input type="date" id="new_devolucion_fecha" name="fecha_devolucion" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_devolucion_tipo">Tipo de Devolución:</label>
+                        <input type="text" id="new_devolucion_tipo" name="tipo_devolucion" maxlength="50" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new_devolucion_id_entrada_inventario_fk">ID Entrada Inventario (FK):</label>
+                        <input type="number" id="new_devolucion_id_entrada_inventario_fk" name="id_entrada_inventario_fk" min="1" required>
+                    </div>
+                    <button type="submit" class="button primary-button">Registrar Devolución</button>
+                </form>
+
+                <hr class="form-separator">
+
+                <h3>Actualizar Devolución Existente</h3>
+                <form class="form-card">
+                    <div class="input-group">
+                        <label for="edit_devolucion_id">ID de Devolución a Editar:</label>
+                        <input type="number" id="edit_devolucion_id" name="id_devolucion" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_devolucion_cantidad">Cantidad:</label>
+                        <input type="number" id="edit_devolucion_cantidad" name="cantidad_devolucion" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_devolucion_unidad">Unidad de Medida:</label>
+                        <input type="text" id="edit_devolucion_unidad" name="unidad_medida_devolucion" maxlength="15">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_devolucion_descripcion">Descripción:</label>
+                        <textarea id="edit_devolucion_descripcion" name="descripcion_devolucion" rows="3" maxlength="200"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_devolucion_fecha">Fecha de Devolución:</label>
+                        <input type="date" id="edit_devolucion_fecha" name="fecha_devolucion">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_devolucion_tipo">Tipo de Devolución:</label>
+                        <input type="text" id="edit_devolucion_tipo" name="tipo_devolucion" maxlength="50">
+                    </div>
+                    <div class="input-group">
+                        <label for="edit_devolucion_id_entrada_inventario_fk">ID Entrada Inventario (FK):</label>
+                        <input type="number" id="edit_devolucion_id_entrada_inventario_fk" name="id_entrada_inventario_fk" min="1">
+                    </div>
+                    <button type="submit" class="button primary-button">Actualizar Devolución</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h3>Shori Express</h3>
+                    <p>La mejor parrilla a domicilio, ahora más cerca de ti.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Navegación</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="menu.html">Menú</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="terminos-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Parrilla-Shori/100094411466821/?locale=hi_IN#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shori Express. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
