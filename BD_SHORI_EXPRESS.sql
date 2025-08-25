@@ -8,33 +8,19 @@ CREATE TABLE ROL (
 
 CREATE TABLE USUARIO (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_documento_usuario ENUM('CC', 'TI', 'PET', 'PPT', 'Pasaporte') NOT NULL,
+    documento_usuario VARCHAR(10) UNIQUE NOT NULL,
     nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
-	contrasena_usuario VARCHAR(255) NOT NULL,
+    contraseña_usuario VARCHAR(255) NOT NULL UNIQUE,
+    primer_nombre_usuario VARCHAR(40) NOT NULL,
+    apellido_usuario VARCHAR(40) NOT NULL,
     correo_usuario VARCHAR(100) NOT NULL UNIQUE,
-    estado_usuario ENUM('activo', 'inactivo') DEFAULT 'activo',
     fecha_registro_usuario TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    telefono_usuario VARCHAR(20) NOT NULL UNIQUE,
+    direccion_usuario VARCHAR(100) NOT NULL,
+    estado_usuario ENUM('activo', 'inactivo') DEFAULT 'activo',
     id_rol INT NOT NULL,
-    FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
-);
-
-CREATE TABLE CLIENTE (
-    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_completo_cliente VARCHAR(150) NOT NULL,
-    telefono_cliente VARCHAR(20),
-    direccion_cliente VARCHAR(100),
-	id_usuario INT NOT NULL UNIQUE,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-);
-
-CREATE TABLE EMPLEADO (
-    id_empleado INT AUTO_INCREMENT PRIMARY KEY,
-    documento_empleado VARCHAR (10) UNIQUE NOT NULL,
-    tipo_documento_empleado ENUM ('CC', 'TI', 'PET', 'PPT','Pasaporte'),
-    nombre_completo_empleado VARCHAR(100) NOT NULL,
-    cargo_empleado VARCHAR(50),
-    telefono_empleado VARCHAR(20),
-    id_usuario INT NOT NULL UNIQUE,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+    FOREIGN KEY (id_rol) REFERENCES rol (id_rol)
 );
 
 CREATE TABLE MATERIA_PRIMA (
@@ -54,10 +40,8 @@ CREATE TABLE PRODUCTO_TERMINADO (
 	id_producto_terminado INT AUTO_INCREMENT PRIMARY KEY,
     cantidad_producto_terminado INT NOT NULL,
     nombre_producto_terminado VARCHAR (100) NOT NULL,
-    descripcion_producto_terminado VARCHAR (200) ,
-    precio_venta_producto_terminado DECIMAL(10,2) NOT NULL,
-    categoria_producto_terminado VARCHAR (50) NOT NULL,
-    fecha_fabricacion_producto_terminado DATETIME NOT NULL
+    descripcion_producto_terminado VARCHAR (200),
+    precio_venta_producto_terminado DECIMAL(10,2) NOT NULL
 );
 
 CREATE TABLE DETALLE_PRODUCTO_FINAL (
@@ -75,26 +59,14 @@ CREATE TABLE ENTRADA_INVENTARIO (
     id_entrada INT AUTO_INCREMENT PRIMARY KEY,
     cantidad_entrada INT NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
+    tipo_entrada ENUM('Entrada','Devolucion') DEFAULT 'Entrada' NOT NULL ,
     fecha_entrada DATETIME DEFAULT CURRENT_TIMESTAMP,
     descripcion_entrada VARCHAR(200) NOT NULL,
     id_materia_prima INT NOT NULL,
-    id_empleado INT NOT NULL,
+    id_usuario INT NOT NULL,
 	FOREIGN KEY (id_materia_prima) REFERENCES materia_prima(id_materia_prima),
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
 );
-
-CREATE TABLE ENTRADA_DEVOLUCION (
-	id_devolucion INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion_devolucion VARCHAR (200) NOT NULL,
-    fecha_devolucion DATETIME NOT NULL,
-    tipo_devolucion VARCHAR (30) NOT NULL,
-    motivo_devolucion VARCHAR (50) NOT NULL,
-    cantidad_devolucion INT NOT NULL,
-    unidad_medida_devolucion VARCHAR (10) NOT NULL,
-    id_entrada INT NOT NULL,
-    FOREIGN KEY (id_entrada) REFERENCES entrada_inventario (id_entrada)
- );
-
 
 CREATE TABLE PEDIDO (
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
@@ -102,18 +74,24 @@ CREATE TABLE PEDIDO (
     descripcion_pedido VARCHAR (200) NOT NULL,
     estado_pedido ENUM('pendiente', 'preparación', 'en camino', 'entregado', 'cancelado') DEFAULT 'pendiente',
     total_pedido DECIMAL(10,2) DEFAULT 0,
-    id_cliente INT NOT NULL,
-    id_empleado INT NOT NULL,
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado),
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+    id_usuario INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
+);
+
+CREATE TABLE DETALLE_PEDIDO (
+	id_detalle_pedido INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_producto_terminado INT NOT NULL,
+    cantidad_detalle_pedido INT NOT NULL,
+    fecha_detalle_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_producto_terminado) REFERENCES producto_terminado (id_producto_terminado),
+    FOREIGN KEY (id_pedido) REFERENCES PEDIDO (id_pedido)
 );
 
 CREATE TABLE FACTURA (
 	id_factura INT AUTO_INCREMENT PRIMARY KEY,
     numero_factura VARCHAR(20) NOT NULL UNIQUE,  
     fecha_emision DATETIME DEFAULT CURRENT_TIMESTAMP,
-    nombre_cliente VARCHAR(100) NOT NULL,
-    documento_cliente VARCHAR(20),
     subtotal DECIMAL(10,2) NOT NULL,
     iva DECIMAL(10,2) NOT NULL,
     total DECIMAL(10,2) NOT NULL,
@@ -128,23 +106,20 @@ CREATE TABLE BONO (
     puntos_necesarios_bono INT DEFAULT 5,
     estado_bono ENUM('disponible', 'redimido', 'no disponible') DEFAULT 'no disponible',
     fecha_actualizacion_bono TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    id_cliente INT NOT NULL,
+    id_usuario INT NOT NULL,
     id_pedido INT NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES PEDIDO (id_pedido),
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
 );
-
 
 CREATE TABLE REDENCION_BONO (
     id_redencion INT AUTO_INCREMENT PRIMARY KEY,
     id_bono INT NOT NULL,
-    id_empleado INT NOT NULL,
+    id_usuario INT NOT NULL,
     fecha_redencion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_bono) REFERENCES bono(id_bono),
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+    FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
 );
-
-
 
 
 
